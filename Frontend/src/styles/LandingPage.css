@@ -1,0 +1,138 @@
+/* General */
+.landing {
+  font-family: "Poppins", sans-serif;
+  background: #f0f5ed;
+  color: #222;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #fff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.logo-img {
+  width: 60px;
+}
+.logo-text {
+  font-size: 24px;
+  font-weight: 600;
+}
+.logo-text .highlight {
+  color: #4caf50;
+}
+
+.search {
+  flex: 1;
+  margin: 0 20px;
+  padding: 8px 14px;
+  border: 1px solid #aaa;
+  border-radius: 25px;
+  outline: none;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+}
+.hero-img {
+  width: 100%;
+  border-radius: 6px;
+}
+.hero-content {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  color: #333;
+}
+.hero-content h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+.hero-content h3.discount {
+  color: #4caf50;
+  margin: 8px 0;
+}
+.hero-btn {
+  padding: 10px 20px;
+  border: 2px solid #ff6f43;
+  background: transparent;
+  border-radius: 25px;
+  color: #ff6f43;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hero-btn:hover {
+  background: #ff6f43;
+  color: #fff;
+}
+
+/* Categories */
+.categories {
+  margin: 20px;
+}
+.category-list {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+.category {
+  cursor: pointer;
+  font-size: 15px;
+  color: #444;
+}
+.category.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Products */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+  padding: 20px;
+}
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.card h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.card p {
+  font-size: 13px;
+  color: #666;
+}
+.card .price {
+  font-size: 15px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-top: 6px;
+}
