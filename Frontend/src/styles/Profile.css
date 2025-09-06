@@ -1,55 +1,95 @@
-/* Profile.css */
-
-.profile-page {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
+/* General */
+body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* Profile Page Container */
+.profile-page {
+  max-width: 520px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.profile-page:hover {
+  transform: translateY(-3px);
+}
+
+/* Profile Header */
+.profile-header {
+  margin-bottom: 25px;
+}
+
 .profile-img {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   object-fit: cover;
   border-radius: 50%;
-  border: 4px solid #3a3a3a;
-  margin-bottom: 20px;
+  border: 4px solid #4caf50;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
 }
 
 .profile-page h2 {
-  font-size: 28px;
-  color: #333333;
-  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #2e2e2e;
+  margin-bottom: 8px;
 }
 
-.profile-page p {
-  font-size: 16px;
-  color: #555555;
-  margin: 5px 0;
+.email {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 6px;
 }
 
-.error {
+.joined {
+  font-size: 14px;
+  color: #888;
+}
+
+.joined span {
+  font-weight: 500;
+  color: #4caf50;
+}
+
+/* Error + Loading */
+.error, .loading {
   max-width: 500px;
   margin: 50px auto;
-  padding: 15px;
-  background-color: #ffe5e5;
-  color: #ff0000;
-  border: 1px solid #ff0000;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 10px;
   text-align: center;
   font-weight: 500;
 }
+
+.error {
+  background: #ffe5e5;
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+}
+
+.loading {
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #90caf9;
+}
+
 /* Navigation Card */
 .profile-nav {
   margin-top: 30px;
   padding: 20px;
   background: #f9fdf9;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
 }
 
 .profile-nav h3 {
@@ -57,56 +97,63 @@
   font-weight: 600;
   margin-bottom: 15px;
   color: #333;
+  text-align: left;
 }
 
+/* Buttons */
 .nav-btn {
   display: block;
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin: 10px 0;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .nav-btn.light {
-  background: #eef6ee;
+  background: #e8f5e9;
   color: #2e7d32;
 }
 
 .nav-btn.light:hover {
-  background: #d8ecd8;
+  background: #c8e6c9;
 }
 
 .nav-btn.primary {
   background: #4caf50;
   color: white;
+  font-weight: 600;
 }
 
 .nav-btn.primary:hover {
   background: #43a047;
 }
 
-
+/* Responsive */
 @media (max-width: 600px) {
   .profile-page {
-    padding: 20px;
-    margin: 30px 20px;
-  }
-
-  .profile-page h2 {
-    font-size: 24px;
-  }
-
-  .profile-page p {
-    font-size: 14px;
+    padding: 22px;
+    margin: 30px 16px;
   }
 
   .profile-img {
     width: 120px;
     height: 120px;
+  }
+
+  .profile-page h2 {
+    font-size: 22px;
+  }
+
+  .email {
+    font-size: 14px;
+  }
+
+  .joined {
+    font-size: 13px;
   }
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../api/axios";
 import "../styles/ProductForm.css";
+import Header from "../components/Header";
 
 const ProductForm = () => {
   const [formData, setFormData] = useState({
@@ -11,16 +12,16 @@ const ProductForm = () => {
     category: "",
     status: "Available",
     seller: "",
-    images: [], // ✅ array of image URLs
+    images: [],
   });
 
-  const [newImageUrl, setNewImageUrl] = useState(""); // input for adding new image
+  const [newImageUrl, setNewImageUrl] = useState("");
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Fetch categories
+  // ✅ Fetch categories
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -33,26 +34,32 @@ const ProductForm = () => {
     fetchCategories();
   }, []);
 
+  // ✅ Generic input change
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Add image URL to images array
+  // ✅ Add image URL
   const handleAddImage = () => {
     if (newImageUrl.trim()) {
-      setFormData({ ...formData, images: [...formData.images, newImageUrl] });
+      setFormData((prev) => ({
+        ...prev,
+        images: [...prev.images, newImageUrl],
+      }));
       setNewImageUrl("");
     }
   };
 
-  // Remove image from array
+  // ✅ Remove image
   const handleRemoveImage = (index) => {
-    const updatedImages = [...formData.images];
-    updatedImages.splice(index, 1);
-    setFormData({ ...formData, images: updatedImages });
+    setFormData((prev) => ({
+      ...prev,
+      images: prev.images.filter((_, i) => i !== index),
+    }));
   };
 
+  // ✅ Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -69,7 +76,7 @@ const ProductForm = () => {
         },
       });
 
-      setSuccess("Product saved successfully!");
+      setSuccess("✅ Product saved successfully!");
       console.log("Saved product:", res.data);
 
       // Reset form
@@ -85,139 +92,133 @@ const ProductForm = () => {
       });
     } catch (err) {
       console.error(err);
-      setError(err.response?.data?.error || "Failed to save product.");
+      setError(err.response?.data?.error || "❌ Failed to save product.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="product-form-container">
-      <form className="product-details" onSubmit={handleSubmit}>
-        <h2 className="section-title">Add / Edit Product</h2>
+    <>
+      <Header/>
+      <div className="product-form-container">
+        <form className="product-details" onSubmit={handleSubmit}>
+          <h2 className="section-title">Add / Edit Product</h2>
 
-        {error && <p className="error">{error}</p>}
-        {success && <p className="success">{success}</p>}
+          {error && <p className="error">{error}</p>}
+          {success && <p className="success">{success}</p>}
 
-        <input
-          type="text"
-          name="title"
-          placeholder="Product Title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
+          {/* Title */}
+          <input
+            type="text"
+            name="title"
+            placeholder="Product Title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
 
-        {/* Image URL input + preview list */}
-        <div style={{ margin: "15px 0" }}>
-          <div style={{ display: "flex", gap: "8px" }}>
-            <input
-              type="text"
-              placeholder="Enter Image URL"
-              value={newImageUrl}
-              onChange={(e) => setNewImageUrl(e.target.value)}
-            />
-            <button type="button" className="add-image-btn"onClick={handleAddImage}>
-              Add
-            </button>
+          {/* Images */}
+          <div className="image-url-box">
+            <div className="image-input-row">
+              <input
+                type="text"
+                placeholder="Enter Image URL"
+                value={newImageUrl}
+                onChange={(e) => setNewImageUrl(e.target.value)}
+              />
+              <button
+                type="button"
+                className="add-image-btn"
+                onClick={handleAddImage}
+                disabled={!newImageUrl.trim()}
+              >
+                ➕ Add
+              </button>
+            </div>
+
+            <div className="image-preview-grid">
+              {formData.images.map((url, idx) => (
+                <div key={idx} className="preview-item">
+                  <img src={url} alt={`Preview ${idx}`} />
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveImage(idx)}
+                    className="remove-img-btn"
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "10px" }}>
-            {formData.images.map((url, idx) => (
-              <div key={idx} style={{ position: "relative" }}>
-                <img
-                  src={url}
-                  alt={`Preview ${idx}`}
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    objectFit: "cover",
-                    border: "1px solid #ccc",
-                    borderRadius: "6px",
-                  }}
-                />
-                <button
-                  type="button"
-                  onClick={() => handleRemoveImage(idx)}
-                  style={{
-                    position: "absolute",
-                    top: "-6px",
-                    right: "-6px",
-                    background: "red",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "50%",
-                    width: "20px",
-                    height: "20px",
-                    cursor: "pointer",
-                  }}
-                >
-                  ×
-                </button>
-              </div>
+          {/* Category */}
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Category</option>
+            {categories.map((cat) => (
+              <option key={cat._id} value={cat._id}>
+                {cat.name}
+              </option>
             ))}
+          </select>
+
+          {/* Description */}
+          <textarea
+            name="description"
+            placeholder="Product Description"
+            value={formData.description}
+            onChange={handleChange}
+            required
+          />
+
+          {/* Price & Quantity */}
+          <div className="form-row">
+            <input
+              type="number"
+              name="price"
+              placeholder="Price"
+              value={formData.price}
+              onChange={handleChange}
+              required
+            />
+            <input
+              type="number"
+              name="quantity"
+              placeholder="Quantity"
+              value={formData.quantity}
+              onChange={handleChange}
+              required
+            />
           </div>
-        </div>
 
-        <select
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          required
-        >
-          <option value="">Select Category</option>
-          {categories.map((cat) => (
-            <option key={cat._id} value={cat._id}>
-              {cat.name}
-            </option>
-          ))}
-        </select>
+          {/* Status */}
+          <select name="status" value={formData.status} onChange={handleChange}>
+            <option value="Available">Available</option>
+            <option value="Sold">Sold</option>
+          </select>
 
-        <input
-          type="text"
-          name="description"
-          placeholder="Product Description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-        />
+          {/* Seller */}
+          <input
+            type="text"
+            name="seller"
+            placeholder="Seller ID / Name"
+            value={formData.seller}
+            onChange={handleChange}
+          />
 
-        <input
-          type="number"
-          name="price"
-          placeholder="Price"
-          value={formData.price}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          type="number"
-          name="quantity"
-          placeholder="Quantity"
-          value={formData.quantity}
-          onChange={handleChange}
-          required
-        />
-
-        <select name="status" value={formData.status} onChange={handleChange}>
-          <option value="Available">Available</option>
-          <option value="Sold">Sold</option>
-        </select>
-
-        <input
-          type="text"
-          name="seller"
-          placeholder="Seller ID / Name"
-          value={formData.seller}
-          onChange={handleChange}
-        />
-
-        <button type="submit" className="submit-btn" disabled={loading}>
-          {loading ? "Saving..." : "Save Product"}
-        </button>
-      </form>
-    </div>
+          {/* Submit */}
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? "⏳ Saving..." : "💾 Save Product"}
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 

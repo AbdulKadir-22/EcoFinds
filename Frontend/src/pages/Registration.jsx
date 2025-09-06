@@ -156,13 +156,6 @@ const Registration = () => {
               />
             </div>
 
-            {/* Terms & Conditions */}
-            <div className="terms-checkbox">
-              <input type="checkbox" id="terms" required />
-              <label htmlFor="terms">
-                I agree with the <a href="#">Terms and Conditions</a>
-              </label>
-            </div>
 
             {/* Submit Button */}
             <button

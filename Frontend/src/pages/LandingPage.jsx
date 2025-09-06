@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axiosInstance from "../api/axios";
 import "../styles/LandingPage.css";
 import herobanner from "../assets/herobanner.png";
@@ -36,10 +36,11 @@ export default function LandingPage() {
     fetchData();
   }, []);
 
-  // Filter products
+  // Filter products by category + search
   const filteredProducts = products.filter((p) => {
+    const productCategory = p.category?.name || p.category;
     const matchCategory = selectedCategory
-      ? p.category === selectedCategory
+      ? productCategory === selectedCategory
       : true;
     const matchSearch = search
       ? p.title.toLowerCase().includes(search.toLowerCase())
@@ -49,7 +50,7 @@ export default function LandingPage() {
 
   return (
     <div className="landing">
-      <Header/>
+      <Header />
 
       {/* ---------------- HERO ---------------- */}
       <section className="hero">
@@ -101,14 +102,17 @@ export default function LandingPage() {
             >
               <img
                 src={
-                  p.image ||
-                  "https://i.pinimg.com/736x/34/58/f5/3458f51c93268fe04ede2e3229fb1202.jpg"
+                  p.images && p.images.length > 0
+                    ? p.images[0]
+                    : "https://placehold.co/300x200/EFEFEF/3A3A3A?text=No+Image"
                 }
                 alt={p.title}
               />
               <h3>{p.title}</h3>
-              <p>{p.description}</p>
-              <p className="price">${p.price}</p>
+              <p className="description">
+                {p.description?.slice(0, 60)}...
+              </p>
+              <p className="price">₹{p.price}</p>
             </div>
           ))
         ) : (

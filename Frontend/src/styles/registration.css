@@ -110,7 +110,7 @@ body {
 
 /* ---------- Button ---------- */
 .create-account-btn {
-  width: 100%;
+  width: 90%;
   padding: 15px;
   border: none;
   border-radius: 10px;
@@ -125,9 +125,6 @@ body {
 .create-account-btn:hover {
   background-color: #256628; /* darker eco green */
 }
-
-/* ---------- Divider ---------- */
-
 
 
 
@@ -160,5 +157,4 @@ body {
   .registration-image-section {
     display: none; /* hide left image for mobile */
   }
-
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import axiosInstance from "../api/axios"; // ✅ use same instance
+import axiosInstance from "../api/axios"; 
 import "../styles/login.css";
 
 const Login = () => {
@@ -31,17 +31,27 @@ const Login = () => {
 
     try {
       const response = await axiosInstance.post("/users/login", formData);
-
       const data = response.data;
+
       if (data.token) {
+        // ✅ Save token & user details to localStorage
         localStorage.setItem("authToken", data.token);
-        localStorage.setItem("username", data.username); // ✅ store username if needed
-        localStorage.setItem("email", data.email);
+        localStorage.setItem("user", JSON.stringify({
+          username: data.username,
+          email: data.email,
+          id: data._id || data.id, // safe fallback
+        }));
+
+        // ✅ Set default Authorization header in axios
+        axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
       }
 
-      navigate("/dashboard");
+      navigate("/landing");
     } catch (err) {
-      setError(err.response?.data?.error || "Something went wrong. Please try again later.");
+      setError(
+        err.response?.data?.error ||
+        "Something went wrong. Please try again later."
+      );
       console.error("Login error:", err);
     } finally {
       setLoading(false);

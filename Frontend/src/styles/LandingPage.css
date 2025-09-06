@@ -3,12 +3,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 body {
-  background: #f9f9f9;
+  background: #f5f7fa;
   color: #222;
+  line-height: 1.5;
 }
 
 /* ------------------- */
@@ -19,7 +20,7 @@ body {
   flex-direction: column;
   padding: 12px 24px;
   background: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -37,17 +38,19 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  cursor: pointer;
 }
 
 .logo-img {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
 }
 
 .logo-text {
   font-size: 24px;
   font-weight: 700;
+  letter-spacing: -0.5px;
 }
 .logo-text .highlight {
   color: #4caf50;
@@ -56,24 +59,30 @@ body {
 /* Icons */
 .icons {
   display: flex;
-  gap: 18px;
+  gap: 20px;
   font-size: 24px;
   cursor: pointer;
+  color: #333;
+  transition: color 0.2s ease;
+}
+.icons:hover {
+  color: #4caf50;
 }
 
 /* Search Bar */
 .search {
   margin-top: 12px;
-  padding: 10px 16px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
+  padding: 12px 16px;
+  border: 1.5px solid #ddd;
+  border-radius: 30px;
   outline: none;
   font-size: 15px;
   width: 100%;
-  transition: border 0.2s ease;
+  transition: all 0.3s ease;
 }
 .search:focus {
   border-color: #4caf50;
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
 }
 
 /* ------------------- */
@@ -85,19 +94,25 @@ body {
 }
 .hero-img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
+  object-fit: cover;
 }
 .hero-btn {
   position: absolute;
   bottom: 20px;
   left: 20px;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background: #ff6f00;
   color: #fff;
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: 600;
+  font-size: 15px;
+  transition: background 0.3s ease;
+}
+.hero-btn:hover {
+  background: #e65c00;
 }
 
 /* ------------------- */
@@ -107,20 +122,31 @@ body {
   margin: 20px 24px;
 }
 .categories h2 {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 600;
 }
 .category-list {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 .category {
   cursor: pointer;
-  color: #333;
-  font-size: 15px;
+  background: #f0f0f0;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: all 0.2s ease;
 }
 .category:hover {
-  text-decoration: underline;
+  background: #e0f7ea;
+  color: #4caf50;
+}
+.category.active {
+  background: #4caf50;
+  color: #fff;
+  font-weight: 600;
 }
 
 /* ------------------- */
@@ -128,39 +154,49 @@ body {
 /* ------------------- */
 .products {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 22px;
   padding: 20px 24px;
 }
 
 .card {
   background: #fff;
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 12px;
+  padding: 14px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 .card img {
   width: 100%;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease;
+  height: 150px;
+  object-fit: cover;
+}
+.card:hover img {
+  transform: scale(1.05);
 }
 .card h3 {
   font-size: 16px;
-  margin-bottom: 5px;
+  font-weight: 600;
+  margin-bottom: 6px;
 }
-.card p {
-  font-size: 14px;
-  color: #555;
+.card .description {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
 }
 .price {
   font-weight: bold;
   color: #4caf50;
-  margin-top: 6px;
+  font-size: 15px;
 }
 
 /* ------------------- */
@@ -168,29 +204,26 @@ body {
 /* ------------------- */
 @media (max-width: 768px) {
   .header {
-    padding: 12px 16px;
+    padding: 10px 16px;
   }
   .logo-text {
     font-size: 20px;
   }
-  .icons {
-    font-size: 22px;
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 }
 
 @media (max-width: 500px) {
-  .header-top {
-    flex-direction: row;
-    justify-content: space-between;
-  }
   .logo-text {
     font-size: 18px;
   }
   .search {
     margin-top: 10px;
     font-size: 14px;
+    padding: 10px 14px;
   }
   .products {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
 }
