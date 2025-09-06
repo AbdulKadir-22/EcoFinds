@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axiosInstance from "../api/axios";
 import "../styles/LandingPage.css";
 import herobanner from "../assets/herobanner.png";
-import logo from "../assets/logo.png";
+import Header from "../components/Header";
 
 export default function LandingPage() {
   const [categories, setCategories] = useState([]);
@@ -49,32 +49,7 @@ export default function LandingPage() {
 
   return (
     <div className="landing">
-      {/* ---------------- HEADER ---------------- */}
-      <header className="header">
-        <div className="header-top">
-          <div className="logo">
-            <img src={logo} alt="EcoFinds" className="logo-img" />
-            <span className="logo-text">
-              Eco<span className="highlight">Finds</span>
-            </span>
-          </div>
-          <div className="icons">
-            <NavLink to="/cart" className="icon" title="Cart">
-              🛒
-            </NavLink>
-            <NavLink to="/profile" className="icon" title="Profile">
-              👤
-            </NavLink>
-          </div>
-        </div>
-        <input
-          type="text"
-          placeholder="Search products..."
-          className="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </header>
+      <Header/>
 
       {/* ---------------- HERO ---------------- */}
       <section className="hero">

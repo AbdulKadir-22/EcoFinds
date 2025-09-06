@@ -1,0 +1,112 @@
+/* Profile.css */
+
+.profile-page {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #3a3a3a;
+  margin-bottom: 20px;
+}
+
+.profile-page h2 {
+  font-size: 28px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.profile-page p {
+  font-size: 16px;
+  color: #555555;
+  margin: 5px 0;
+}
+
+.error {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 15px;
+  background-color: #ffe5e5;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+/* Navigation Card */
+.profile-nav {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f9fdf9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.profile-nav h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.nav-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn.light {
+  background: #eef6ee;
+  color: #2e7d32;
+}
+
+.nav-btn.light:hover {
+  background: #d8ecd8;
+}
+
+.nav-btn.primary {
+  background: #4caf50;
+  color: white;
+}
+
+.nav-btn.primary:hover {
+  background: #43a047;
+}
+
+
+@media (max-width: 600px) {
+  .profile-page {
+    padding: 20px;
+    margin: 30px 20px;
+  }
+
+  .profile-page h2 {
+    font-size: 24px;
+  }
+
+  .profile-page p {
+    font-size: 14px;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+}

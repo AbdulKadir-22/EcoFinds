@@ -14,13 +14,18 @@ function Header() {
             </span>
           </Link>
         </div>
+      
         <div className="icons">
-          <span role="img" aria-label="cart" className="icon">
-            🛒
-          </span>
-          <span role="img" aria-label="profile" className="icon">
-            👤
-          </span>
+          <Link to="/cart" className="logo-link">
+            <span role="img" aria-label="cart" className="icon">
+             🛒
+            </span>
+          </Link>
+          <Link to="/profile" className="logo-link">
+            <span role="img" aria-label="profile" className="icon">
+              👤
+            </span>
+          </Link>
         </div>
       </div>
       <input type="text" placeholder="Search" className="search" />
