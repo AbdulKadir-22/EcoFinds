@@ -15,23 +15,19 @@ export default function LandingPage() {
   return (
     <div className="landing">
       {/* Header */}
-      <header className="header">
-        <div className="logo">
-          <img src={logo} alt="EcoFinds Logo" className="logo-img" />
-          <span className="logo-text">
-            Eco<span className="highlight">Finds</span>
-          </span>
+    <header className="header">
+        <div className="header-top">
+          <div className="logo">
+        <img src={logo} alt="EcoFinds" className="logo-img" />
+           <span className="logo-text">Eco<span className="highlight">Finds</span></span>
+        </div>
+        <div className="icons">
+           <span role="img" aria-label="cart" className="icon">🛒</span>
+           <span role="img" aria-label="profile" className="icon">👤</span>
+        </div>
         </div>
         <input type="text" placeholder="Search" className="search" />
-        <div className="icons">
-          <span role="img" aria-label="cart" className="icon">
-            🛒
-          </span>
-          <span role="img" aria-label="profile" className="icon">
-            👤
-          </span>
-        </div>
-      </header>
+    </header>
 
       {/* Hero Section */}
       <section className="hero">
