@@ -12,6 +12,7 @@
   justify-content: space-between;
   padding: 12px 24px;
   background: #fff;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -20,10 +21,10 @@
   gap: 6px;
 }
 .logo-img {
-  width: 60px;
+  width: 28px;
 }
 .logo-text {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
 }
 .logo-text .highlight {
@@ -32,11 +33,12 @@
 
 .search {
   flex: 1;
-  margin: 0 20px;
+  margin: 10px 20px;
   padding: 8px 14px;
   border: 1px solid #aaa;
   border-radius: 25px;
   outline: none;
+  min-width: 200px;
 }
 
 .icons {
@@ -59,6 +61,7 @@
   top: 20%;
   left: 10%;
   color: #333;
+  max-width: 50%;
 }
 .hero-content h1 {
   font-size: 36px;
@@ -92,6 +95,7 @@
   display: flex;
   gap: 16px;
   margin-top: 8px;
+  flex-wrap: wrap;
 }
 .category {
   cursor: pointer;
@@ -135,4 +139,82 @@
   font-weight: bold;
   color: #4caf50;
   margin-top: 6px;
+}
+
+/* ---------------------- */
+/*   RESPONSIVE DESIGN    */
+/* ---------------------- */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .hero-content {
+    max-width: 70%;
+    top: 15%;
+    left: 8%;
+  }
+
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .search {
+    flex: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .icons {
+    align-self: flex-end;
+    margin-top: 8px;
+  }
+
+  .hero-content {
+    position: static;
+    text-align: center;
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  .hero-btn {
+    margin-top: 12px;
+  }
+
+  .category-list {
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .products {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .card h3 {
+    font-size: 14px;
+  }
+
+  .card p {
+    font-size: 12px;
+  }
+
+  .card .price {
+    font-size: 13px;
+  }
 }
