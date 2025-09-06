@@ -1,0 +1,233 @@
+/* Registration.css */
+
+body {
+  background-color: #1a1a2e;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+.registration-card {
+  display: flex;
+  width: 1000px;
+  background-color: #2e2e4b;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.registration-form-section {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.registration-form-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.login-link {
+  font-size: 0.9rem;
+  color: #a0a0c0;
+  margin-bottom: 30px;
+}
+
+.login-link a {
+  color: #8c8cd2;
+  text-decoration: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.email-pass {
+  display: flex;
+  flex-direction: column;
+  width: 95%; /* Changed to 100% for better responsiveness */
+}
+
+.pass {
+  margin-top: 15px;
+}
+
+.form-row input, 
+.form-input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #3f3f6e;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.form-input::placeholder {
+  color: #a0a0c0;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.terms-checkbox input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #5c5cd6; /* This changes the checkbox color */
+}
+
+.terms-checkbox label {
+  font-size: 0.9rem;
+  color: #a0a0c0;
+}
+
+.terms-checkbox a {
+  color: #8c8cd2;
+  text-decoration: none;
+}
+
+.create-account-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #5c5cd6;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-account-btn:hover {
+  background-color: #7a7ac9;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 30px 0;
+  color: #a0a0c0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #4a4a6e;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 15px;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 15px;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+}
+
+.social-btn {
+  width: 150px;
+  padding: 10px 20px; /* Adjusted padding */
+  border: 1px solid #4a4a6e;
+  border-radius: 10px;
+  background-color: #3f3f6e;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.social-btn img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.social-btn:hover {
+  background-color: #4a4a6e;
+}
+
+.registration-image-section {
+  flex: 1;
+}
+
+.registration-image-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .registration-card {
+    flex-direction: column;
+    width: 90%; 
+    height: auto;
+    margin: 20px;
+  }
+
+  .registration-form-section {
+    padding: 20px;
+  }
+
+  .registration-image-section {
+    display: none;
+  }
+
+  .form-row {
+    flex-direction: column;
+    width: 90%;
+    gap: 15px;
+  }
+  
+  .social-login {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center; 
+    gap: 15px;
+  }
+
+  .social-btn {
+    width: 40%; 
+    padding: 10px; 
+  }
+
+  .social-btn span {
+    display: none;
+  }
+
+  .email-pass {
+    width: 90%;
+  }
+
+  .pass {
+    margin-top: 15;
+  }
+}
